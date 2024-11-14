@@ -11,10 +11,6 @@ _Despleegado con gihub pages, y despliegue automatico con scripts (npm run build
 Este es el Demo de la aplicacion, **Update[ 14/11/2024 ]** [Click Aquí](https://alejandrobecerraptor.github.io/angular-heroes-app/)
 
 
-## Importante ℹ
-
-_si entras en cada uno de los commits podras ver como fue mi proceso paso a paso!._
-
 ## Comenzando 🚀
 
 _Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
@@ -32,6 +28,13 @@ _luego tendras que arrancar el proyecto y para eso necesitas ejecutar el comando
 ## `ng serve`
 
 y listo disfruta! 🍦
+
+## Importante ℹ
+
+_necesitas levantar el backend para que la aplicacion funcione_
+para levantar el backend en otra consola de comandos
+
+## `npm run backend`
 
 ## Construido con 🛠️
 
