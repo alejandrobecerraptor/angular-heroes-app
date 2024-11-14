@@ -3,7 +3,7 @@
 
 Este proyecto esta generado con: [Angular CLI](https://angular.dev/) version 18.2.11.
 
-_Aplicacion desarrollada en Angular._
+_Aplicacion desarrollada en Angular,aplicando concepto de layoutPage, rutas hijas y lazyload_
 
 ## Demo 🎮
 _Despleegado con gihub pages, y despliegue automatico con scripts (npm run build:github)_
