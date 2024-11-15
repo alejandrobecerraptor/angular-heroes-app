@@ -3,8 +3,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { filter, switchMap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-new-page',
@@ -31,7 +33,8 @@ export class NewPageComponent implements OnInit {
     private heroService: HeroesService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -63,6 +66,40 @@ export class NewPageComponent implements OnInit {
         this.showSnackBar(`${hero.superhero} agregado correctamente`);
       });
     }
+  }
+
+  onDeleteHero() {
+    if (!this.currentHero.id) throw new Error('Hero id is required');
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: this.heroForm.value,
+    });
+
+    dialogRef
+      .afterClosed()
+      .pipe(
+        filter((result: boolean) => result),
+        switchMap(() => this.heroService.deleteHeroById(this.currentHero.id)),
+        filter((wasDeleted: boolean) => wasDeleted)
+      )
+      .subscribe((result) => {
+        this.showSnackBar(
+          `${this.currentHero.superhero} borrado correctamente`
+        );
+        this.router.navigate(['/heroes']);
+      });
+
+    //lo mismo pero diferente:
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   if (!result) return;
+
+    //   this.heroService.deleteHeroById(this.currentHero.id).subscribe((resp) => {
+    //     if (resp) {
+    //       this.showSnackBar(`${this.currentHero.superhero} borrado correctamente`);
+    //       this.router.navigate(['/heroes']);
+    //     }
+    //   });
+    // });
   }
 
   showSnackBar(message: string): void {
