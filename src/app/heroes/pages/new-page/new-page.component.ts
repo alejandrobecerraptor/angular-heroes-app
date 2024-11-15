@@ -30,7 +30,7 @@ export class NewPageComponent implements OnInit {
     { id: 'Marvel Comics', desc: 'Marvel - Comics' },
   ];
 
-  isProduction = environments.pdn;
+  isProduction = !environments.pdn;
 
   constructor(
     private heroService: HeroesService,
