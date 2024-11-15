@@ -24,18 +24,24 @@ export class NewPageComponent {
     { id: 'Marvel Comics', desc: 'Marvel - Comics' },
   ];
 
-  constructor(
-    private heroService: HeroesService,
-  ) {}
+  constructor(private heroService: HeroesService) {}
 
   get currentHero(): Hero {
     return this.heroForm.value as Hero;
   }
 
   onSumit() {
-
     if (this.heroForm.invalid) return;
 
+    if (this.currentHero.id) {
+      this.heroService.updateHero(this.currentHero).subscribe((hero) => {
+        this.heroForm.reset();
+      });
+    } else {
+      this.heroService.addHero(this.currentHero).subscribe((hero) => {
+        this.heroForm.reset();
+      });
+    }
 
     console.log({
       formIsValid: this.heroForm.valid,
