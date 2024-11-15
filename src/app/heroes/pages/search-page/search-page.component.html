@@ -31,6 +31,10 @@
       >
     </mat-autocomplete>
   </mat-form-field>
-
-  {{selectedHero | json}}
+  <p *ngIf="!isProduction">
+    En la version de produccion no sirve este buscador debido al endpoint que
+    estoy utilizando, pero en local funciona bien. te invito a descargarlo de
+    forma local si quieres ver el funcionamiento adecuado (leer readme)
+  </p>
+  {{ selectedHero | json }}
 </div>
