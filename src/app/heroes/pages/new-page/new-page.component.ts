@@ -7,6 +7,7 @@ import { filter, switchMap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
+import { environments } from '../../../../environments/environments';
 
 @Component({
   selector: 'app-new-page',
@@ -28,6 +29,8 @@ export class NewPageComponent implements OnInit {
     { id: 'DC Comics', desc: 'DC - Comics' },
     { id: 'Marvel Comics', desc: 'Marvel - Comics' },
   ];
+
+  isProduction = environments.pdn;
 
   constructor(
     private heroService: HeroesService,

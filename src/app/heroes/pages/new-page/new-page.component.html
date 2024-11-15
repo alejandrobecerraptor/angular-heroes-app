@@ -69,6 +69,11 @@
             Guardar
           </button>
         </div>
+        <p *ngIf="isProduction">
+          En la version de produccion no sirve este editar debido al endpoint que
+          estoy utilizando, pero en local funciona bien. te invito a descargarlo de
+          forma local si quieres ver el funcionamiento adecuado (leer readme)
+        </p>
       </mat-card-content>
     </mat-card>
   </div>

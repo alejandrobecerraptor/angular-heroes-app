@@ -13,7 +13,7 @@ export class SearchPageComponent {
   searchInput = new FormControl('');
   heroes: Hero[] = [];
   selectedHero?: Hero;
-  isProduction = environments;
+  isProduction = environments.pdn;
 
   constructor(private heroService: HeroesService) {}
 
